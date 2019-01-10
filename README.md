@@ -227,7 +227,7 @@ curl -s -X POST \
 	"peers":  ["peer0.org1.example.com","peer1.org1.example.com"],
 	"fcn":"invoke",
 	"operation":"commit",
-	"args": ["commitPrivate","uuid3","uuid2-Owner"]
+	"args": ["commit","uuid3","uuid3-Payload"]
 }'
 ```
 **NOTE:** Ensure that you save the Transaction ID from the response in order to pass this string in the subsequent query transactions.

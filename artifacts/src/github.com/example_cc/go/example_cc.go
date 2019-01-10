@@ -178,11 +178,11 @@ func getQueryResultForQueryString(stub shim.ChaincodeStubInterface, queryString 
 
 func (t *SimpleChaincode) EventHandler(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var err error
-	uniqueid := args[2]
+	uniqueid := args[1]
 
 	fmt.Printf("Entering Invoke......\n")
 
-	payloadValue := args[3]
+	payloadValue := args[2]
 
 	payloadDataEvent := &PayloadStruct{
 		uniqueid,

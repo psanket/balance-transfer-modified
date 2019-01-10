@@ -183,4 +183,20 @@ curl -s -X POST \
 echo
 echo
 
+echo "POST invoke chaincode on peers of Org1 and Org2"
+echo
+TRX_ID=$(curl -s -X POST \
+  http://localhost:4000/channels/mychannel/chaincodes/mycc \
+  -H "authorization: Bearer $ORG1_TOKEN" \
+  -H "content-type: application/json" \
+  -d '{
+	"peers":  ["peer0.org1.example.com","peer1.org1.example.com"],
+	"fcn":"invoke",
+	"operation":"commit",
+	"args": ["commit","uuid3","uuid3-Payload"]
+}')
+echo "Transaction ID is $TRX_ID"
+echo
+echo
+
 echo "Total execution time : $(($(date +%s)-starttime)) secs ..."

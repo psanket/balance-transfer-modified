@@ -217,28 +217,21 @@ curl -s -X POST \
 
 ### Invoke request
 
-This invoke request is signed by peers from both orgs, *org1* & *org2*.
+This invoke request is signed by peers from both orgs, *org1* & *org2*. This invoke request is modified as per the customized chaincode written.
 ```
 curl -s -X POST \
   http://localhost:4000/channels/mychannel/chaincodes/mycc \
-  -H "authorization: Bearer <put JSON Web Token here>" \
+  -H "authorization: Bearer $ORG1_TOKEN" \
   -H "content-type: application/json" \
   -d '{
-	"peers": ["peer0.org1.example.com","peer0.org2.example.com"],
-	"fcn":"move",
-	"args":["a","b","10"]
+	"peers":  ["peer0.org1.example.com","peer1.org1.example.com"],
+	"fcn":"invoke",
+	"operation":"commit",
+	"args": ["commitPrivate","uuid3","uuid2-Owner"]
 }'
 ```
 **NOTE:** Ensure that you save the Transaction ID from the response in order to pass this string in the subsequent query transactions.
 
-### Chaincode Query
-
-```
-curl -s -X GET \
-  "http://localhost:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=%5B%22a%22%5D" \
-  -H "authorization: Bearer <put JSON Web Token here>" \
-  -H "content-type: application/json"
-```
 
 ### Query Block by BlockNumber
 

@@ -53,6 +53,7 @@ var instantiateChaincode = async function(peers, channelName, chaincodeName, cha
 
 			// // Use this to demonstrate the following policy:
 			// // The policy can be fulfilled when members from both orgs signed.
+			//This policy works if i have 1-of instead of 2-of for committing transactions to the peer
 			 'endorsement-policy': {
 			         identities: [
 			 		{ role: { name: 'member', mspId: 'Org1MSP' }},
